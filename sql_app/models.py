@@ -1,7 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
-from .database import Base
+from sqlalchemy.ext.declarative import declarative_base
 # sqlalchemyのためのモデルを定義する
+Base = declarative_base()
 
 # This code defines the database model for the User table.
 class User(Base):
