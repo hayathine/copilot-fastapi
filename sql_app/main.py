@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from . import models, schemas, crud
-from .database import SessionLocal, engine
+from .database import sessionLocal, engine
 
 models.Base.metadata.create_all(bind=engine) # データベースのテーブルを作成する
 
@@ -9,7 +9,7 @@ app = FastAPI()
 
 # Dependency
 def get_db():
-    db = SessionLocal()
+    db = sessionLocal()
     try:
         yield db # yieldは、関数を一時停止して、値を返すことができる
     finally:
