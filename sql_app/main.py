@@ -1,11 +1,25 @@
 from fastapi import FastAPI, Depends, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from . import models, schemas, crud
 from .database import sessionLocal, engine
 
+
 models.Base.metadata.create_all(bind=engine) # データベースのテーブルを作成する
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:5173"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"], # 全てのHTTPメソッドを許可する
+    allow_headers=["*"], # 全てのHTTPヘッダーを許可する
+)
 
 # Dependency
 def get_db():
