@@ -10,7 +10,9 @@ models.Base.metadata.create_all(bind=engine) # データベースのテーブル
 app = FastAPI()
 
 origins = [
-    "http://localhost:5173"
+    "http://localhost:5173/todo",
+    "http://localhost:5173",
+    "http://localhosts"
 ]
 
 app.add_middleware(

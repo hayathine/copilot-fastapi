@@ -26,6 +26,7 @@ class UserCreate(UserBase):
 
 class User(UserBase):
     id: int
+    username: str
     is_active: bool
     items: list[Item] = []
 
