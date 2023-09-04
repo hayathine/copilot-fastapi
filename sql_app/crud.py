@@ -18,7 +18,7 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 # ユーザーを作成する関数
 def create_user(db: Session, user: schemas.UserCreate):
     fake_hashed_password = user.password + "notreallyhashed"
-    db_user = models.User(email=user.email, hashed_password=fake_hashed_password) # ユーザーを作成する
+    db_user = models.User(username=user.username, email=user.email, hashed_password=fake_hashed_password) # ユーザーを作成する
     db.add(db_user) # ユーザーを追加する
     db.commit() # データベースにコミットする
     db.refresh(db_user) # データベースからユーザーをリフレッシュする

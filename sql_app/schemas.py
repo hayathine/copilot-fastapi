@@ -18,6 +18,7 @@ class Item(ItemBase):
         orm_mode = True # SQLAlchemyモデルからPydanticモデルへの変換を可能にする
 
 class UserBase(BaseModel):
+    username: str
     email: str
 
 class UserCreate(UserBase):
